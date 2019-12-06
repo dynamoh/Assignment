@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style media="screen">
+  .form-control{
+    width:25vw;
+    margin-right:25px;
+  }
+  .serf{
+    display:flex;
+    margin-top:20px;
+  }
+  .checkb{
+    margin-left:12px;
+    margin-right:5px;
+  }
+  .checkb1{
+    margin-right:5px;
+  }
+
+  .ab1{
+    border-right: 2px solid rgba(220,220,220,0.5);
+  }
+
+  .card1{
+    width:22vw;
+    height:55vh;
+    box-shadow: 0px 2px 10px grey;
+    margin-left:45px;
+  }
+  .card1 img{
+    width:22vw;
+    height:48vh;
+  }
+
+  .cont{
+    text-transform: uppercase;
+    padding:2px 0px 5px 0px;
+  }
+
+  .card2{
+    margin-top:70px;
+    margin-left:45px;
+  }
+
+</style>
+
+  <div class="container">
+
+    <form method="GET">{% csrf_token %}
+
+      <input type="checkbox" class="checkb1" name="opt1" value="Node">Node
+      <input type="checkbox" class="checkb" name="opt2" value="Flutter">Flutter
+      <input type="checkbox" class="checkb" name="opt3" value="Django">Django
+      <input type="checkbox" class="checkb" name="opt4" value="Swift">Swift
+      <input type="checkbox" class="checkb" name="opt5" value="Adobe XD">Adobe XD
+
+      <div class="serf">
+        <input type="text" name="search" class="form-control" placeholder="Search" >
+        <button type="submit" name="button" class="btn btn-primary" >Search/Filter</button>
+      </div>
+      <hr>
+
+    </form><br>
+
+
+    {% if obj %}
+    <ol>
+
+      {% for i in obj %}
+
+        <li>
+          <div class="cnt">
+
+            <div class="row">
+              <div class="col-lg ab1">
+                <div class="card1">
+                  <img src="/media/{{i.avatar}}" alt="">
+                  <div class="cont" align="center">
+                    <h2>{{i.name}}</h2>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-lg card2">
+
+                <h3>Preference           : {{i.preference}}</h3>
+                <h3>Skill                : {{i.skills}}</h3>
+                {% if i.year_of_study > 4 %}
+                <h3>Year                 : Passout</h3>
+                {% else %}
+                <h3>Year                 : {{i.year_of_study}}</h3>
+                {% endif %}
+                <h3>Project completed    : {{i.projects_count}}</h3>
+              </div>
+            </div>
+
+          </div>
+        </li><br> <hr>
+        <br>
+
+      {% endfor %}
+    </ol>
+    {% else %}
+    <div class="container">
+      <h2>No User Available !!</h2>
+
+    </div>
+    {% endif %}
+
+
+  </div>
+
+{% endblock %}

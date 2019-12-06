@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="container">
+    {% if user == 0 %}
+      <div class="container">
+         <h1>Login Successful!</h1>
+         <h3> As a  Student Partner</h3>
+         <h4>Username : {{obj.name}}</h4>
+
+      </div>
+    {% else %}
+    <div class="container">
+       <h1>Login Successful!</h1>
+       <h3> As a  Project Manager</h3>
+       <h4>Username : {{obj.name}}</h4>
+       <a href="{% url 'listofuser' %}"><button type="submit" class="btn btn-info" name="button">ShortList Students </button></a>
+
+    </div>
+    {% endif %}
+  </div>
+
+{% endblock %}

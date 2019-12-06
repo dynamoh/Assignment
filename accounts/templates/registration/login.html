@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Student Records</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+
+  <style media="screen">
+    body{
+      background: #f3f7f7;
+    }
+
+    .authbox{
+      box-shadow: 0 6px 16px 0 rgba(0,0,0,.2);
+      background: #fff;
+      width:35vw;
+      text-align: center;
+      margin:auto;
+      margin-top:15vh;
+      height:56vh;
+    }
+
+    .lgbtn{
+      border-color: #1ba94c;
+      background: #1ba94c;
+      box-shadow: 0 4px 12px 0 rgba(27,169,76,.5);
+      height: 36px;
+      font-size: 18px;
+      margin: 10px;
+      text-align: right;
+    }
+
+    .lgcon h3{
+
+      padding:20px 0px 20px 0px;
+      margin-bottom: 15px;
+
+    }
+
+    .rdbtn{
+      padding:2px 5px 15px 0px;
+    }
+
+    .rdbtn label{
+      font-weight: 600;
+      padding:0px 8px 0px 0px;
+    }
+
+    label{
+      font-weight: 600;
+    }
+
+    .sgn h3{
+      color:#738F93;
+      background: #f3f7f7;
+      cursor: pointer;
+    }
+
+  </style>
+
+
+  <body>
+
+    <div class="authbox" align="center">
+
+      <div class="lgcon">
+
+        <div align="center">
+          <h3>Log In</h3>
+          <hr>
+        </div>
+
+
+      </div>
+
+      <form method="POST">
+          {% csrf_token %}
+
+
+          {% comment %} <div class="row">
+
+            <div class="col-sm">
+              <label>Student Partner</label>
+              <input type="radio" name="desig" value="student" required>
+            </div>
+
+            <div class="col-sm">
+              <label>Project Manager</label>
+              <input type="radio" name="desig" value="manager" required>
+            </div>
+
+          </div><hr> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+        <!-- <div class="rdbtn">
+          <label>Student</label>
+          <input type="radio" name="loginas" value="student">
+          <label>Project Manager</label>
+          <input type="radio" name="loginas" value="projectmanager">
+        </div> -->
+
+
+
+        {{form.as_p}}
+        <button type="submit" class="lgbtn" name="button">LOGIN</button>
+
+      </form>
+
+    </div>
+
+  </body>
+</html>
